@@ -1,4 +1,4 @@
-import { get } from 'http';
+
 import { 
     logout, 
     checkAuth,
@@ -73,10 +73,16 @@ teamTwoSubtractButton.addEventListener('click', () => {
 
 finishGameButton.addEventListener('click', async() => {
     
+    const game = {
+        name1,
+        name2,
+        score1,
+        score2,
+    };
     // create a new game using the current game state
-    await createGame(name1, name2, score1, score2);
+    await createGame(game);
     // re-fetch the games to get the updated state
-    getGames();
+    // getGames();
     // reassign the past games state to the re-fetched, updated games
     
     displayAllGames();
@@ -96,10 +102,8 @@ logoutButton.addEventListener('click', () => {
  // on load . . .
 window.addEventListener('', async() => {
     // fetch all games
-    await getGames();
     // check if there are any
     // if there are, set those as the initial state of pastGames
-    
     // then display all the games (hint: call displayAllGames())
 });
 
